@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Track;
+use App\Models\Team;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class TrackController extends Controller
+class TeamController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): Response
     {
-        return Inertia::render('Tracks/Index', [
-            'tracks' => Track::latest()->get(),
+        return Inertia::render('Teams/Index', [
+            'teams' => Team::latest()->get(),
         ]);
     }
 
@@ -25,7 +25,7 @@ class TrackController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Tracks/Create');
+        return Inertia::render('Teams/Create');
     }
 
     /**
@@ -36,23 +36,25 @@ class TrackController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'location' => 'required|string|max:255',
-            'trackLength' => 'required|numeric',
+            'foundedYear' => 'required|numeric',
+            'series' => 'required|string|max:255',
         ]);
 
-        $track = new Track();
-        $track->name = $request->name;
-        $track->location = $request->location;
-        $track->trackLength = $request->trackLength;
+        $team = new Team();
+        $team->name = $request->name;
+        $team->location = $request->location;
+        $team->foundedYear = $request->foundedYear;
+        $team->series = $request->series;
 
-        $track->save();
+        $team->save();
 
-        return redirect(route('tracks.index'));
+        return redirect(route('teams.index'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Track $track)
+    public function show(Team $team)
     {
         //
     }
@@ -60,7 +62,7 @@ class TrackController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Track $track)
+    public function edit(Team $team)
     {
         //
     }
@@ -68,7 +70,7 @@ class TrackController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Track $track)
+    public function update(Request $request, Team $team)
     {
         //
     }
@@ -76,7 +78,7 @@ class TrackController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Track $track)
+    public function destroy(Team $team)
     {
         //
     }

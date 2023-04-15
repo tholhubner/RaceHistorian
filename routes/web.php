@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TrackController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,10 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::resource('/teams', TeamController::class)
+    ->only(['index', 'create', 'store', 'update', 'delete'])
+    ->middleware(['auth', 'verified']);
 
 Route::resource('/tracks', TrackController::class)
     ->only(['index', 'create', 'store', 'update', 'delete'])

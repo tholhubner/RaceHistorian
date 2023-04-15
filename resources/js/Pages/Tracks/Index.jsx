@@ -11,7 +11,7 @@ const Index = ({ auth, tracks }) => {
                 <div className="mt-6 bg-white shadow-sm rounded-lg divide-y">
                     { tracks.length ? (
                         tracks.map(track =>
-                            <div>
+                            <div key={track.id}>
                                 <p className="mt-4 text-lg text-gray-900">{track.name}</p>
                                 <p className="mt-4 text-lg text-gray-900">{track.location}</p>
                                 <p className="mt-4 text-lg text-gray-900">{track.length}</p>
