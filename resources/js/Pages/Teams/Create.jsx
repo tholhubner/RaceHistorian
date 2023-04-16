@@ -4,6 +4,7 @@ import InputError from "@/Components/InputError"
 import PrimaryButton from "@/Components/PrimaryButton"
 import { useForm, Head } from "@inertiajs/react"
 import TextInput from "@/Components/TextInput"
+import PageHeader from "@/Components/PageHeader"
 
 const Create = ({ auth }) => {
 	const {
@@ -29,7 +30,7 @@ const Create = ({ auth }) => {
 	return (
 		<Authenticated
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Team Creation</h2>}
+            header={<PageHeader title="Team Creation" />}
         >
 			<Head title="Tracks" />
 			<div className="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
