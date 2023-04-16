@@ -1,4 +1,5 @@
 import React from "react"
+import DatePicker from "react-date-picker"
 import Authenticated from "@/Layouts/AuthenticatedLayout"
 import InputError from "@/Components/InputError"
 import PrimaryButton from "@/Components/PrimaryButton"
@@ -25,7 +26,10 @@ const Create = ({ auth }) => {
 	}
 
 	return (
-		<Authenticated user={auth.user}>
+		<Authenticated
+            user={auth.user}
+            header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Driver Creation</h2>}
+        >
 			<Head title="Drivers" />
 			<div className="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
 				<form onSubmit={submit}>
@@ -41,12 +45,13 @@ const Create = ({ auth }) => {
 						className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm my-5"
 						onChange={e => setData("country", e.target.value)}
 					/>
-                    <TextInput
-						value={data.birthdate}
-						placeholder="Driver Birthdate"
-						className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm my-5"
-						onChange={e => setData("birthdate", e.target.value)}
-					/>
+                    <DatePicker
+                        className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        onChange={(value) => {
+                            setData('birthdate', value)
+                        }}
+                        value={data.birthdate}
+                    />
 					<InputError
                         message={
                             errors.name && errors.name

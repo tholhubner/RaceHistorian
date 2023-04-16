@@ -25,13 +25,13 @@ class DriverController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render("Driver/Create");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         //
     }
