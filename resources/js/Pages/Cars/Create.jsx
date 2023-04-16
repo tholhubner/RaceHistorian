@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import Authenticated from "@/Layouts/AuthenticatedLayout"
 import InputError from "@/Components/InputError"
 import PrimaryButton from "@/Components/PrimaryButton"
@@ -7,7 +7,6 @@ import TextInput from "@/Components/TextInput"
 import PageHeader from "@/Components/PageHeader"
 
 const Create = ({ auth, teams }) => {
-    const [ selectedTeam, setSelectedTeam ] = useState(null)
 	const {
 		data,
 		setData,
@@ -88,23 +87,24 @@ const Create = ({ auth, teams }) => {
 						className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm my-5"
 						onChange={e => setData("weight", e.target.value)}
 					/>
-                    <div className="dropdown block w-full">
-                        <label tabIndex={0} className="btn m-1">{selectedTeam ? selectedTeam : "Team Ownership"}</label>
-                        <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                    <div className="w-full mb-2">
+                        <select className="select w-full">
+                            <option disabled selected>Team ownership</option>
                             {teams.length &&
                                 teams.map(team => (
-                                    <li
+                                    <option
                                         key={team.id}
                                         onClick={() => {
                                             setData("team_id", team.id)
                                             setSelectedTeam(team.name)
                                         }}
+                                        selected={data.team_id === team.id}
                                     >
                                         {team.name}
-                                    </li>
+                                    </option>
                                 ))
                             }
-                        </ul>
+                        </select>
                     </div>
 					<InputError
                         message={
