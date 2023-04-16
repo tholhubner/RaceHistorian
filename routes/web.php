@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\DriverController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TrackController;
@@ -33,6 +34,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('/cars', CarController::class)
+    ->only(['index', 'create', 'store', 'update', 'delete'])
+    ->middleware(['auth', 'verified']);
+
+Route::resource('/drivers', DriverController::class)
     ->only(['index', 'create', 'store', 'update', 'delete'])
     ->middleware(['auth', 'verified']);
 
