@@ -49,18 +49,11 @@ const Create = ({ auth }) => {
 						className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm my-5"
 						onChange={e => setData("foundedYear", e.target.value)}
 					/>
-                    <TextInput
-						value={data.series}
-						placeholder="Series"
-						className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm my-5"
-						onChange={e => setData("series", e.target.value)}
-					/>
 					<InputError
                         message={
                             errors.name && errors.name
                             || errors.location && errors.location
                             || errors.foundedYear && errors.foundedYear
-                            || errors.series && errors.series
                         }
                         className="mt-2"
                     />

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TrackController;
@@ -30,6 +31,10 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::resource('/cars', CarController::class)
+    ->only(['index', 'create', 'store', 'update', 'delete'])
+    ->middleware(['auth', 'verified']);
 
 Route::resource('/teams', TeamController::class)
     ->only(['index', 'create', 'store', 'update', 'delete'])

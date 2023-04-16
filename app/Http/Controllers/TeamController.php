@@ -37,14 +37,12 @@ class TeamController extends Controller
             'name' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'foundedYear' => 'required|numeric',
-            'series' => 'required|string|max:255',
         ]);
 
         $team = new Team();
         $team->name = $request->name;
         $team->location = $request->location;
         $team->foundedYear = $request->foundedYear;
-        $team->series = $request->series;
 
         $team->save();
 

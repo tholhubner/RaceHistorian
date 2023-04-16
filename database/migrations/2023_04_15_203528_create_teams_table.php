@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('location');
             $table->integer('foundedYear');
-            $table->string('series');
             $table->timestamps();
         });
     }
