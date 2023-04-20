@@ -12,11 +12,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@test.com',
+            'password' => 'test123',
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\Team::factory()->create([
+            'name' => 'Test Team 1',
+            'location' => 'UK',
+            'foundedYear' => 2010,
+        ]);
+
+        \App\Models\Track::factory()->create([
+            'name' => 'Test Track',
+            'location' => 'US',
+            'trackLength' => 2.45,
+        ]);
     }
 }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('location');
-            $table->decimal('trackLength');
+            $table->double('trackLength', 4, 2);
             $table->timestamps();
         });
     }
